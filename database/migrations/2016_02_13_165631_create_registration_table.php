@@ -12,7 +12,12 @@ class CreateRegistrationTable extends Migration
      */
     public function up()
     {
-        //
+    	Schema::create('registration', function (Blueprint $table) {
+    		$table->increments('id');
+    		$table->integer('circle_id')->unsigned();
+    		$table->integer('pupil_id')->unsigned();
+    		$table->timestamps();
+    	});
     }
 
     /**
@@ -22,6 +27,6 @@ class CreateRegistrationTable extends Migration
      */
     public function down()
     {
-        //
+    	Schema::drop('registration');
     }
 }
