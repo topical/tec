@@ -12,7 +12,14 @@ class CreatePupilTable extends Migration
      */
     public function up()
     {
-        //
+    	Schema::create('pupil', function (Blueprint $table) {
+    		$table->increments('id');
+    		$table->string('firstname')->unique();
+    		$table->string('surname')->unique();
+    		$table->integer('schoolenrolment')->unsigned();
+    		$table->string('school')->unique();
+    		$table->timestamps();
+    	});
     }
 
     /**
@@ -22,6 +29,6 @@ class CreatePupilTable extends Migration
      */
     public function down()
     {
-        //
+    	Schema::drop('pupil');
     }
 }
