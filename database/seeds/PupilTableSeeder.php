@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PupilTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserTableSeeder::class);
-    	$this->call(PupilTableSeeder::class);
+        foreach(range(1,20) as $index){
+        	factory(App\Pupil::class)->create();
+        }
     }
 }
