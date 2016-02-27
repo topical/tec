@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Pupil;
+use App\School;
 
 class PupilController extends Controller
 {
@@ -27,7 +28,7 @@ class PupilController extends Controller
      */
     public function index()
     {
-        $pupils = Pupil::orderBy('surname')->orderBy('firstname')->orderBy('schoolenrolment')->get();
+        $pupils = Pupil::with('school')->orderBy('surname')->orderBy('firstname')->orderBy('schoolenrolment')->get();
         return view('/pupil.index', [
         		'pupils' => $pupils
         ]);
@@ -40,7 +41,14 @@ class PupilController extends Controller
      */
     public function create()
     {
-    	return view ('pupil.create');
+    	$schools = School::orderBy('name')->get();
+    	$schoolmapping = [];
+    	foreach($schools as $school) {
+    		$schoolmapping[$school->id] = $school->name . ' (' . $school->town . ')';
+    	}
+    	return view ('pupil.create', [
+    			'schoolmapping' => $schoolmapping
+    	]);
     }
 
     /**
@@ -54,14 +62,16 @@ class PupilController extends Controller
     	$this->validate($request, [
     			'firstname' => 'required',
     			'surname' => 'required',
-    			'schoolenrolment' => 'required',
-    			
+    			'grade' => 'required|numeric|min:3|max:13',
+    			'school_id' => 'required|exists:school,id',	
     	]);
     	
     	$pupil = Pupil::create( [
     			'firstname' => $request->firstname,
     			'surname' => $request->surname,
-    			'schoolenrolment' => $request->schoolenrolment,
+    			'schoolenrolment' => Pupil::gradeToEnrolment($request->grade),
+    			'letter' => $request->letter,
+    			'school_id' => $request->school_id,
     			'street' => $request->street,
     			'town' => $request->town,
     			'zipcode' => $request->zipcode,
@@ -95,8 +105,17 @@ class PupilController extends Controller
     {
     	$pupil = Pupil::findOrFail($id);
     	 
+    	$schools = School::orderBy('name')->get();
+    	$schoolmapping = [];
+    	foreach($schools as $school) {
+    		$schoolmapping[$school->id] = $school->name . ' (' . $school->town . ')';
+    	}
+    	
+    	$pupil->grade = $pupil->getGrade();
+    	
     	return view('pupil.edit', [
-    			'pupil' => $pupil
+    			'pupil' => $pupil, 
+    			'schoolmapping' => $schoolmapping,
     	]);
     }
 
@@ -112,23 +131,24 @@ class PupilController extends Controller
     	$this->validate($request, [
     			'firstname' => 'required',
     			'surname' => 'required',
-    			'schoolenrolment' => 'required',
-    			
+    			'grade' => 'required|numeric|min:3|max:13',
+    			'school_id' => 'required|exists:school,id',
     	]);
     	 
     	$pupil = Pupil::findOrFail($id);
     	 
     	$pupil->firstname = $request->firstname;
     	$pupil->surname = $request->surname;
-    	$pupil->grade = $request->grade;
-    	$pupil->school = $request->school;
+    	$pupil->setGrade( $request->grade );
+    	$pupil->letter = $request->letter;
+    	$pupil->school_id = $request->school_id;
     	$pupil->street = $request->street;
     	$pupil->town = $request->town;
     	$pupil->zipcode = $request->zipcode;
     	 
     	$pupil->save();
     	 
-    	return redirect('school/' . $id);
+    	return redirect('pupil/' . $id);
     }
 
     /**

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Schule bearbeiten</div>
+                <div class="panel-heading">Sch&uuml;ler bearbeiten</div>
                 <div class="panel-body">
                     {{ Form::model($pupil, ['route' => ['pupil.update', $pupil->id], 'method' => 'PUT', 'class' => 'form-horizontal']) }}
                   		<div class="form-group {{ $errors-> has ('firstname') ? ' has-error' : '' }} ">
@@ -33,7 +33,7 @@
                     	<div class="form-group {{ $errors-> has ('grade') ? ' has-error' : '' }} ">
                     		{{ Form::label('grade', 'Klassenstufe:', ['class' => 'col-md-4 control-label']) }}
                     		<div class="col-md-6">
-                    			{{ Form::text('street', null, ['class' => 'form-control']) }}
+                    			{{ Form::number('grade', null, ['class' => 'form-control']) }}
                     			@if ($errors->has('grade'))
                     				<span class="help-block">
                     			 		<strong>{{ $errors->first('grade') }}</strong>
@@ -41,10 +41,21 @@
                     			@endif
                     		</div>
                     	</div>
+                    	<div class="form-group {{ $errors-> has ('letter') ? ' has-error' : '' }} ">
+                    		{{ Form::label('letter', 'Klasse:', ['class' => 'col-md-4 control-label']) }}
+                    		<div class="col-md-6">
+                    			{{ Form::text('letter', null, ['class' => 'form-control']) }}
+                    			@if ($errors->has('letter'))
+                    				<span class="help-block">
+                    			 		<strong>{{ $errors->first('letter') }}</strong>
+                    				</span>
+                    			@endif
+                    		</div>
+                    	</div>
                     	<div class="form-group {{ $errors-> has ('school') ? ' has-error' : '' }} ">
                     		{{ Form::label('school', 'Schule:', ['class' => 'col-md-4 control-label']) }}
                     		<div class="col-md-6">
-                    			{{ Form::text('school', null, ['class' => 'form-control']) }}
+                    			{{ Form::select('school_id', $schoolmapping, null, ['class' => 'form-control']) }}
                     			@if ($errors->has('school'))
                     				<span class="help-block">
                     			 		<strong>{{ $errors->first('school') }}</strong>

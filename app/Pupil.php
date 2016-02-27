@@ -9,7 +9,7 @@ class Pupil extends Model
     protected $table = 'pupil';
     
     protected $fillable = [
-    		'firstname', 'surname', 'schoolenrolment', 'school', 'street', 'zipcode', 'town', 'letter'
+    		'firstname', 'surname', 'schoolenrolment', 'school_id', 'street', 'zipcode', 'town', 'letter'
     ];
     
     public function school()
@@ -44,6 +44,11 @@ class Pupil extends Model
     
     public function setGrade( $grade )
     {
-    	$this->schoolenrolment = SessionDate::getYear() - $grade - 1;
+    	$this->schoolenrolment = SessionData::getYear() - $grade + 1;
+    }
+    
+    static public function gradeToEnrolment( $grade )
+    {
+    	return SessionData::getYear() - $grade + 1;
     }
 }

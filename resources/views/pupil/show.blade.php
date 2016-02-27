@@ -7,7 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{{ $pupil->firstname . ' ' . $pupil->surname }}</div>
                 <div class="panel-body">
-                    {{ $pupil->school . ' ' . $pupil->grade
+                    {{ $pupil->school->name . ' ' . $pupil->getGrade() . $pupil->letter }}
+                    <br/>
                     <strong>Anschrift</strong>
                     <br/>
                     {{ $pupil->street }}

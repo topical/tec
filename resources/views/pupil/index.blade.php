@@ -5,20 +5,20 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Schulen<	/div>
+				<div class="panel-heading">Schulen</div>
 
 				<table class = "table table-hover">
 					<thead>
 						<tr>
 							<td>Vorname</td>
 							<td>Nachname</td>
-							<td>Klassenstufe</td>
+							<td>Klasse</td>
 							<td>Schule</td>
 							<td>Adresse</td>
 						</tr>
 					</thead>
 				 	<tbody>
-				 		@foreach ($schools as $school)
+				 		@foreach ($pupils as $pupil)
 				 			<tr onclick="$(location).attr('href', '{{ url('/pupil/' . $pupil->id) }}');">
 				 				<td>
 				 					<div>{{ $pupil->firstname }}</div>
@@ -27,13 +27,13 @@
 				 					<div>{{ $pupil->surname }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $pupil->grade }}</div>
+				 					<div>{{ $pupil->getGrade() . $pupil->letter }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $pupil->school }}</div>
+				 					<div>{{ $pupil->school->name }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $school->street . ', ' . $school->zipcode . ' ' . $school->town }}</div>
+				 					<div>{{ $pupil->street . ', ' . $pupil->zipcode . ' ' . $pupil->town }}</div>
 				 				</td>
 				 			</tr>
 				 		@endforeach
