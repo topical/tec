@@ -25,6 +25,6 @@ class SchoolYearController extends Controller
     	
     	SessionData::setYear($request->year);
     	
-    	return redirect('/');
+    	return redirect('/home');
     }
 }

@@ -8,7 +8,7 @@ class SessionData
 {
 	static public function getYear()
 	{
-		return Session::get('year', function() {
+		return Session::get('schoolyear', function() {
 			$time = localtime();
 			if( $time[4] >= 8)
 				return 1900 + $time[5];
@@ -19,6 +19,6 @@ class SessionData
 	
 	static public function setYear( $year )
 	{
-		Session::set('year', $year);
+		Session::set('schoolyear', $year);
 	}
 }
