@@ -10,7 +10,7 @@
 				<table class="table table-hover">
 					<tbody>
 						@foreach ($subjects as $subject)
-						<tr>
+						<tr onclick="$(location).attr('href', '{{ url('/subject/' . $subject->id . '/edit') }}');">
 							<td>
 								<div>{{ $subject->name }}</div>
 							</td>

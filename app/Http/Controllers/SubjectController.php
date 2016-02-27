@@ -17,7 +17,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::orderBy('name')->get();
         
         return view('subject.index', [
         	'subjects' => $subjects
@@ -42,7 +42,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request, [
+        $this->validate($request, [
         	'name' => 'required|unique:subject'
         ]);
         
@@ -92,7 +92,7 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-    	$this->validate(request, [
+    	$this->validate($request, [
     			'name' => 'required'
     	]);
     	
@@ -102,7 +102,7 @@ class SubjectController extends Controller
     	
     	$subject->save();
     	
-    	return redirect('subject/' . $id);
+    	return redirect('subject');
     }
 
     /**
