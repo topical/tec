@@ -34,6 +34,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
-    Route::get('/subject', 'SubjectController@index');
-    Route::get('/school', 'SchoolController@index');
+    Route::resource('/subject', 'SubjectController');
+    Route::resource('/school', 'SchoolController');
 });
