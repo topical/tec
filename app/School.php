@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class School extends Model
 {
 	protected $table = 'school';
+	
+	protected $fillable = [
+		'name', 'street', 'zipcode', 'town'
+	];
 }

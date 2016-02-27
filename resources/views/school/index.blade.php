@@ -16,7 +16,7 @@
 					</thead>
 				 	<tbody>
 				 		@foreach ($schools as $school)
-				 			<tr>
+				 			<tr onclick="$(location).attr('href', '{{ url('/school/' . $school->id) }}');">
 				 				<td>
 				 					<div>{{ $school->name }}</div>
 				 				</td>

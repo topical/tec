@@ -17,11 +17,11 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
+        $schools = School::orderBy('name')->get();
         
         return view('school.index', [
         	'schools' => $schools
-        ]);
+        ]); 
     }
 
     /**
@@ -42,7 +42,7 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request, [
+        $this->validate($request, [
         	'name' => 'required'
         ]);
         
@@ -95,7 +95,7 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
-    	$this->validate(request, [
+    	$this->validate($request, [
     			'name' => 'required'
     	]);
     	
