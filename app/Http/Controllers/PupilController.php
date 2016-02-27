@@ -40,7 +40,7 @@ class PupilController extends Controller
      */
     public function create()
     {
-        //
+    	return view ('pupil.create');
     }
 
     /**
@@ -51,7 +51,23 @@ class PupilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$this->validate($request, [
+    			'firstname' => 'required',
+    			'surname' => 'required',
+    			'schoolenrolment' => 'required',
+    			
+    	]);
+    	
+    	$pupil = Pupil::create( [
+    			'firstname' => $request->firstname,
+    			'surname' => $request->surname,
+    			'schoolenrolment' => $request->schoolenrolment,
+    			'street' => $request->street,
+    			'town' => $request->town,
+    			'zipcode' => $request->zipcode,
+    	]);
+    	
+    	return redirect('pupil');
     }
 
     /**
@@ -62,7 +78,11 @@ class PupilController extends Controller
      */
     public function show($id)
     {
-        //
+    	$pupil = Pupil::findOrFail($id);
+    	
+    	return view('pupil.show', [
+    			'pupil' => $pupil
+    	]);
     }
 
     /**
@@ -73,7 +93,11 @@ class PupilController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$pupil = Pupil::findOrFail($id);
+    	 
+    	return view('pupil.edit', [
+    			'pupil' => $pupil
+    	]);
     }
 
     /**
@@ -85,7 +109,26 @@ class PupilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    	$this->validate($request, [
+    			'firstname' => 'required',
+    			'surname' => 'required',
+    			'schoolenrolment' => 'required',
+    			
+    	]);
+    	 
+    	$pupil = Pupil::findOrFail($id);
+    	 
+    	$pupil->firstname = $request->firstname;
+    	$pupil->surname = $request->surname;
+    	$pupil->schoolenrolment = $request->schoolenrolment;
+    	$pupil->school = $request->school;
+    	$pupil->street = $request->street;
+    	$pupil->town = $request->town;
+    	$pupil->zipcode = $request->zipcode;
+    	 
+    	$pupil->save();
+    	 
+    	return redirect('school/' . $id);
     }
 
     /**
@@ -96,6 +139,12 @@ class PupilController extends Controller
      */
     public function destroy($id)
     {
-        //
+    	$pupil = Pupil::findOrFail($id);
+    	
+    	$pupil->delete();
+    	
+    	Session::flash('message', 'Die ausgewählte Schule wurde gelöscht');
+    	
+    	return redirect('pupil');
     }
 }

@@ -8,6 +8,10 @@ class Pupil extends Model
 {
     protected $table = 'pupil';
     
+    protected $fillable = [
+    		'firstname', 'surname', 'schoolenrolment', 'school', 'street', 'zipcode', 'town', 'letter'
+    ];
+    
     public function school()
     {
     	return $this->belongsTo('App\School');
