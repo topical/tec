@@ -36,4 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/school', 'SchoolController');
+    Route::resource('/schoolyear', 'SchoolYearController', [
+    	'only' => ['index', 'store']
+    ]);
 });

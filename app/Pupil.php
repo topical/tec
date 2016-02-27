@@ -31,5 +31,15 @@ class Pupil extends Model
     public function batch()
     {
     	return $this->belongsToMany('App\Batch', 'submission');
-    }  
+    }
+    
+    public function getGrade()
+    {
+    	return SessionData::getYear() - $this->schoolenrolment + 1;
+    }
+    
+    public function setGrade( $grade )
+    {
+    	$this->schoolenrolment = SessionDate::getYear() - $grade - 1;
+    }
 }
