@@ -21,11 +21,24 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Pupil::class, function (Faker\Generator $faker) {
+	$school = App\School::orderBy(DB::raw('RAND()'))->first();
 	return [
 		'surname' => $faker->lastName,
 		'firstname' => $faker->firstName,
 		'schoolenrolment' => rand(2006,2012),
-		'school' => $faker->lastName . ' Gymasium',
+		'school_id' => $school->id,
 		'letter' => 'abcde'[rand(0,4)],
+		'street' => $faker->streetName . ' ' . rand(1,50),
+		'zipcode' => '0' . rand(1000,9999),
+		'town' => $faker->city,
 	];
 });
+
+$factory->define(App\School::class, function (Faker\Generator $faker) {
+	return [
+			'name' => $faker->lastName . ' Gymnasium',
+			'street' => $faker->streetName . ' ' . rand(1,50),
+			'zipcode' => '0' . rand(1000,9999),
+			'town' => $faker->city,
+		];
+	});

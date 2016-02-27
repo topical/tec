@@ -19,6 +19,9 @@ class CreatePupilTable extends Migration
     		$table->integer('schoolenrolment')->unsigned();
     		$table->integer('school_id')->unsigned();
     		$table->foreign('school_id')->references('id')->on('school');
+    		$table->string('street');
+    		$table->string('zipcode');
+    		$table->string('town');
     		$table->timestamps();
     	});
     }
