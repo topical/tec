@@ -37,6 +37,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/subject', 'SubjectController');
     Route::resource('/school', 'SchoolController');
     Route::resource('/pupil', 'PupilController');
+    Route::resource('/user', 'UserController');
     Route::resource('/schoolyear', 'SchoolYearController', [
     	'only' => ['index', 'store']
     ]);

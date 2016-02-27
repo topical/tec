@@ -51,6 +51,7 @@
                     <li><a href="{{ url('/subject') }}">F&aumlcher</a></li>
                     <li><a href="{{ url('/school') }}">Schule</a></li>
                     <li><a href="{{ url('/pupil') }}">Sch&uuml;ler</a></li>
+                    <li><a href="{{ url('/user') }}">Nutzer</a></li>
                     <li><a href="{{ url('/schoolyear') }}">
                     	{{ App\SessionData::getYear() . '/' . (App\SessionData::getYear() + 1) }}
                     </a></li>
