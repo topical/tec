@@ -15,7 +15,9 @@ class CreateRegistrationTable extends Migration
     	Schema::create('registration', function (Blueprint $table) {
     		$table->increments('id');
     		$table->integer('circle_id')->unsigned();
+    		$table->foreign('circle_id')->references('id')->on('circle');
     		$table->integer('pupil_id')->unsigned();
+    		$table->foreign('pupil_id')->references('id')->on('pupil');
     		$table->timestamps();
     	});
     }
