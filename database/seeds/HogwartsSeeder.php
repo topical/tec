@@ -11,7 +11,13 @@ class HogwartsSeeder extends Seeder
      */
     public function run()
     {
-                
+    	DB::table('school')->insert([
+    		'name' => 'Hogwarts',
+    		'zipcode' => 'B15L3',
+    		'street' => 'Nokturngasse',
+    		'town' => 'Hogwarts-City'
+    	]);
+    	
         DB::table('subject')->insert([
         	'name' => 'Zaubertränke'
         ]);
