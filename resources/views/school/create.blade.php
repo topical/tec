@@ -7,14 +7,47 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Neue Schule</div>
                 <div class="panel-body">
-                    {{ Form::open(['url' => 'school', 'class' => 'form-horizontal']) }}
-                    	<div class="form-group {{ $errors-> has ('name') ? ' has-error' : '' }} ">
-                    		{{ Form::label('name', 'Name:', ['class' => 'col-md-4 control-label']) }}
+                    {{ Form::open(['url' => 'pupil', 'class' => 'form-horizontal']) }}
+                    	<div class="form-group {{ $errors-> has ('firstname') ? ' has-error' : '' }} ">
+                    		{{ Form::label('firstname', 'Vorname:', ['class' => 'col-md-4 control-label']) }}
                     		<div class="col-md-6">
-                    			{{ Form::text('name', null, ['class' => 'form-control']) }}
-                    			@if ($errors->has('name'))
+                    			{{ Form::text('firstname', null, ['class' => 'form-control']) }}
+                    			@if ($errors->has('firstname'))
                     				<span class="help-block">
-                    			 		<strong>{{ $errors->first('name') }}</strong>
+                    			 		<strong>{{ $errors->first('firstname') }}</strong>
+                    				</span>
+                    			@endif
+                    		</div>
+                    	</div>
+                    	<div class="form-group {{ $errors-> has ('surname') ? ' has-error' : '' }} ">
+                    		{{ Form::label('surname', 'Nachname:', ['class' => 'col-md-4 control-label']) }}
+                    		<div class="col-md-6">
+                    			{{ Form::text('surname', null, ['class' => 'form-control']) }}
+                    			@if ($errors->has('surname'))
+                    				<span class="help-block">
+                    			 		<strong>{{ $errors->first('surname') }}</strong>
+                    				</span>
+                    			@endif
+                    		</div>
+                    	</div>
+                    	<div class="form-group {{ $errors-> has ('grade') ? ' has-error' : '' }} ">
+                    		{{ Form::label('grade', 'Klassenstufe:', ['class' => 'col-md-4 control-label']) }}
+                    		<div class="col-md-6">
+                    			{{ Form::text('street', null, ['class' => 'form-control']) }}
+                    			@if ($errors->has('grade'))
+                    				<span class="help-block">
+                    			 		<strong>{{ $errors->first('grade') }}</strong>
+                    				</span>
+                    			@endif
+                    		</div>
+                    	</div>
+                    	<div class="form-group {{ $errors-> has ('school') ? ' has-error' : '' }} ">
+                    		{{ Form::label('school', 'Schule:', ['class' => 'col-md-4 control-label']) }}
+                    		<div class="col-md-6">
+                    			{{ Form::text('school', null, ['class' => 'form-control']) }}
+                    			@if ($errors->has('school'))
+                    				<span class="help-block">
+                    			 		<strong>{{ $errors->first('school') }}</strong>
                     				</span>
                     			@endif
                     		</div>

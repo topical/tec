@@ -5,15 +5,16 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ $school->name }}</div>
+                <div class="panel-heading">{{ $pupil->firstname . ' ' . $pupil->surname }}</div>
                 <div class="panel-body">
+                    {{ $pupil->school . ' ' . $pupil->grade
                     <strong>Anschrift</strong>
                     <br/>
-                    {{ $school->street }}
+                    {{ $pupil->street }}
                     <br/>
-                    {{ $school->zipcode . ' ' . $school->town }}
+                    {{ $pupil->zipcode . ' ' . $pupil->town }}
                     <br/>
-                    <a class="btn -primary" href="{{ url('/school/' . $school->id . '/edit') }}">
+                    <a class="btn -primary" href="{{ url('/pupil/' . $pupil->id . '/edit') }}">
                     <i class="fa fa-btn fa-edit"></i>Bearbeiten
                     </a>
                 </div>

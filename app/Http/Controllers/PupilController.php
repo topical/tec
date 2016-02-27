@@ -120,7 +120,7 @@ class PupilController extends Controller
     	 
     	$pupil->firstname = $request->firstname;
     	$pupil->surname = $request->surname;
-    	$pupil->schoolenrolment = $request->schoolenrolment;
+    	$pupil->grade = $request->grade;
     	$pupil->school = $request->school;
     	$pupil->street = $request->street;
     	$pupil->town = $request->town;
