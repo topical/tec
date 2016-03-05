@@ -17,12 +17,12 @@ class Circle extends Model
     	return $this->belongsTo('App\Subject');
     }
     
-    public function registration()
+    public function registrations()
     {
     	return $this->hasMany('App\Registration');
     }
     
-    public function batch()
+    public function batches()
     {
     	return $this->hasMany('App\Batch');
     }
@@ -32,7 +32,7 @@ class Circle extends Model
     	return $this->belongsToMany('App\Pupil', 'registration');
     }
     
-    public function submission()
+    public function submissions()
     {
     	return $this->hasManyThrough('App\Submission', 'batch');
     }
