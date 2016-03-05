@@ -50,12 +50,5 @@ $factory->define(App\Circle::class, function (Faker\Generator $faker) {
 			'grade' => rand(4,13),
 			'subject_id' => $subject->id,
 	];
-});	});
+});	
 
-$factory->define(App\Batch::class, function (Faker\Generator $faker) {
-	$circle = App\Circle::orderBy(DB::raw('RAND()'))->first();
-	return [
-			'maxscore' => rand(10,40),
-			'cirle_id' => $cirle->id,
-	];
-});
