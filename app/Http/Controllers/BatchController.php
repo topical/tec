@@ -11,6 +11,8 @@ use App\SessionData;
 use App\Registration;
 use App\Subject;
 use App\Circle;
+use App\Submission;
+use App\Pupil;
 
 class BatchController extends Controller
 {
@@ -89,12 +91,7 @@ class BatchController extends Controller
      */
     public function show($id)
     {
-    	$circle = Circle::findOrFail($id);
-    	$pupils = $circle->pupils();
-    	return view('circle.show', [
-    			'circle' => $circle,
-    			'pupils' => $pupils,
-    	]);
+    
     }
 
     /**
@@ -105,16 +102,17 @@ class BatchController extends Controller
      */
     public function edit($id)
     {
-    	$circle = Circle::findOrFail($id);
-    	 
-    	$subjects = Subject::orderBy('name')->get();
-    	foreach($subjects as $subject) 
+    	$batch = Batch::findOrFail($id);
+    	$circle = $batch->circle()->get();
+    	$pupils = $circle->pupils()->get();
+    	$submissions = $batch->submissions()->get();
     	
-    	$circle->grade = $circle->getGrade();
-    	$circle->year = $circle->getYear();
-    	
-    	return view('circle.edit', [
-    			'circle' => $circle, 
+    	return view('batch.edit', [
+    			'batch' => $batch,
+    			'circle' => $circle,
+    			'pupils' => $pupils,
+    			'submissions' => $submissions,
+    			'maxscore' => $batch->maxscore
     	]);
     }
 

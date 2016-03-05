@@ -10,7 +10,7 @@
 				<table class = "table table-hover">
 				 	<tbody>
 				 		@foreach ($batches as $batch)
-				 			<tr onclick="$(location).attr('href', '{{ url('/batch/' . $batch->id) }}');">
+				 			<tr onclick="$(location).attr('href', '{{ url('/batch/' . $batch->id . '/edit') }}');">
 				 				<td>
 				 					<div>{{ $batch->seqno }}</div>
 				 				</td>
