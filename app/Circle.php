@@ -8,6 +8,10 @@ class Circle extends Model
 {
     protected $table = 'circle';
     
+    protected $fillable = [
+    		'subject_id', 'grade', 'year',
+    ];
+    
     public function subject()
     {
     	return $this->belongsTo('App\Subject');

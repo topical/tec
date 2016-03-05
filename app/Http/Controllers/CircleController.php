@@ -48,7 +48,13 @@ class CircleController extends Controller
     {
     	$subjects = Subject::orderBy('name')->get();
     	
-    	return view ('circle.create');
+    	$subjectmapping = [];
+    	foreach($subjects as $subject) {
+    		$subjectmapping[$subject->id] = $subject->name;
+    	}
+    	return view ('circle.create', [
+    			'subjectmapping' => $subjectmapping
+    	]);
     }
 
     /**
@@ -59,7 +65,17 @@ class CircleController extends Controller
      */
     public function store(Request $request)
     {
-    	//
+    	$this->validate($request, [
+    			'subject_id' => 'required|exists:subject,id',
+    			'grade' => 'required|numeric|min:3|max:13',
+    	]);
+    	$circle = Circle::create( [
+    			'subject_id' => $request->subject_id,
+    			'grade' => $request->grade,
+    			'year' => SessionData::getYear()
+    	]);
+    	 
+    	return redirect('circle');
     }
 
     /**

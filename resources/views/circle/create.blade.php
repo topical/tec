@@ -7,15 +7,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Neuer Korrespondenzzirkel</div>
                 <div class="panel-body">
-                    {{ Form::open(['url' => 'pupil', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['url' => 'circle', 'class' => 'form-horizontal']) }}
                     	
-                    	<div class="form-group {{ $errors-> has ('subject') ? ' has-error' : '' }} ">
-                    		{{ Form::label('subject', 'Fach:', ['class' => 'col-md-4 control-label']) }}
+                    	<div class="form-group {{ $errors-> has ('subject_id') ? ' has-error' : '' }} ">
+                    		{{ Form::label('subject_id', 'Fach:', ['class' => 'col-md-4 control-label']) }}
                     		<div class="col-md-6">
-                    			{{ Form::select('subject', null, ['class' => 'form-control']) }}
-                    			@if ($errors->has('subject'))
+                    			{{ Form::select('subject_id', $subjectmapping, null, ['class' => 'form-control']) }}
+                    			@if ($errors->has('subject_id'))
                     				<span class="help-block">
-                    			 		<strong>{{ $errors->first('subject') }}</strong>
+                    			 		<strong>{{ $errors->first('subject_id') }}</strong>
                     				</span>
                     			@endif
                     		</div>
