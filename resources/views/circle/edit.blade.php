@@ -10,16 +10,33 @@
 				<table class = "table table-hover">
 				 	<tbody>
 				 		@foreach ($pupils as $pupil)
-				 			<tr onclick="$(location).attr('href', '{{ url('/pupil/' . $pupil->id) }}');">
-				 				<td>
+				 			<tr>
+				 				<td style="vertical-align: middle">
 				 					<div>{{ $pupil->firstname . ' ' . $pupil->surname }}</div>
 				 				</td>
-				 				<td>
+				 				<td style="vertical-align: middle">
 				 					<div>{{ $pupil->school->name }}</div>
 				 				</td>
-				 				<td>
+				 				<td style="vertical-align: middle">
 				 					<div>{{ $pupil->getGrade() . $pupil->letter }}</div>
 				 				</td>
+				 				<td style="vertical-align: middle">
+				 					@if ($registered_pupils->contains($pupil))
+				 					<button class="btn btn-success" type="button" onclick="
+                                    	$.get( '{{ url('/registration/remove') }}',
+                                    			{ pupil_id : {{ $pupil->id }}, 
+                                    			  circle_id : {{ $circle->id }}
+                                    			}, function() { location.reload(); } );
+					 				">Austragen</button>
+				 					@else
+				 					<button class="btn" type="button" type="button" onclick="
+                                    	$.get( '{{ url('/registration/add') }}',
+                                    			{ pupil_id : {{ $pupil->id }}, 
+                                    			  circle_id : {{ $circle->id }}
+                                    			}, function() { location.reload(); } );
+				 					">Eintragen</button>
+				 					@endif
+				 				</td>	
 				 			</tr>
 				 		@endforeach
 				 	</tbody>

@@ -43,5 +43,7 @@ Route::group(['middleware' => 'web'], function () {
     	'only' => ['index', 'store']
     ]);
     Route::resource('/batch', 'BatchController');
+    Route::get('/registration/add', 'RegistrationController@add');
+    Route::get('/registration/remove', 'RegistrationController@remove');
 });
 	

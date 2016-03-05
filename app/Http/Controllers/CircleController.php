@@ -109,13 +109,13 @@ class CircleController extends Controller
     		$grade = $request->grade;
     	}
     	$pupils = Pupil::where('schoolenrolment', $circle->year - $grade + 1)->orderBy('surname')->get();
-    	$registrations = Registration::where('circle_id', $circle->id);
+    	$registered_pupils = $circle->pupils()->get();
     	
     	return view('circle.edit', [
     			'circle' => $circle,
     			'grade' => $grade,
     			'pupils' => $pupils,
-    			'registrations' => $registrations
+    			'registered_pupils' => $registered_pupils
     	]);
     }
 
