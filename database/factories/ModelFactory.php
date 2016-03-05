@@ -42,3 +42,12 @@ $factory->define(App\School::class, function (Faker\Generator $faker) {
 			'town' => $faker->city,
 		];
 	});
+
+$factory->define(App\Circle::class, function (Faker\Generator $faker) {
+	$subject = App\Subject::orderBy(DB::raw('RAND()'))->first();
+	return [
+			'year' => rand(2012,2020),
+			'grade' => rand(4,13),
+			'subject_id' => $subject->id,
+	];
+});
