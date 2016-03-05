@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Circle;
 use App\SessionData;
 use App\Registration;
+use App\Subject;
 
 
 class CircleController extends Controller
@@ -69,7 +70,7 @@ class CircleController extends Controller
     public function show($id)
     {
     	$circle = Circle::findOrFail($id);
-    	$pupils = $circle->pupils();
+    	$pupils = $circle->pupils()->get();
     	return view('circle.show', [
     			'circle' => $circle,
     			'pupils' => $pupils,

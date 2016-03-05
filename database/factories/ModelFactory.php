@@ -41,7 +41,7 @@ $factory->define(App\School::class, function (Faker\Generator $faker) {
 			'zipcode' => '0' . rand(1000,9999),
 			'town' => $faker->city,
 		];
-	});
+});
 
 $factory->define(App\Circle::class, function (Faker\Generator $faker) {
 	$subject = App\Subject::orderBy(DB::raw('RAND()'))->first();
@@ -52,3 +52,11 @@ $factory->define(App\Circle::class, function (Faker\Generator $faker) {
 	];
 });	
 
+	$factory->define(App\Registration::class, function (Faker\Generator $faker) {
+		$circle = App\Circle::orderBy(DB::raw('RAND()'))->first();
+		$pupil = App\Pupil::orderBy(DB::raw('RAND()'))->first();
+		return [
+				'pupil_id' => $pupil->id,
+				'circle_id' => $circle->id,
+		];
+	});

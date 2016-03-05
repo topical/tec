@@ -26,8 +26,5 @@ class BatchSeeder extends Seeder
         		]);
     		}
     	}
-    	foreach(range(1,20) as $index){
-    		factory(App\Batch::class)->create();
-    	}
     }
 }
