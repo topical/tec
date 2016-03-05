@@ -5,42 +5,30 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Schulen</div>
+				<div class="panel-heading">Zirkel</div>
 
 				<table class = "table table-hover">
 					<thead>
 						<tr>
-							<td>Vorname</td>
-							<td>Nachname</td>
+							<td>Fach</td>
 							<td>Klasse</td>
-							<td>Schule</td>
-							<td>Adresse</td>
 						</tr>
 					</thead>
 				 	<tbody>
-				 		@foreach ($pupils as $pupil)
-				 			<tr onclick="$(location).attr('href', '{{ url('/pupil/' . $pupil->id) }}');">
+				 		@foreach ($circles as $circle)
+				 			<tr onclick="$(location).attr('href', '{{ url('/circle/' . $circle->id) }}');">
 				 				<td>
-				 					<div>{{ $pupil->firstname }}</div>
+				 					<div>{{ $circle->subject->name }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $pupil->surname }}</div>
-				 				</td>
-				 				<td>
-				 					<div>{{ $pupil->getGrade() . $pupil->letter }}</div>
-				 				</td>
-				 				<td>
-				 					<div>{{ $pupil->school->name }}</div>
-				 				</td>
-				 				<td>
-				 					<div>{{ $pupil->street . ', ' . $pupil->zipcode . ' ' . $pupil->town }}</div>
+				 					<div>{{ $circle->grade }}</div>
 				 				</td>
 				 			</tr>
 				 		@endforeach
 				 	</tbody>
 				</table>
 				<div class="panel-heading">
-					<a href="{{ url('/pupil/create') }}"> Neuen Sch&uuml;ler hinzuf&uuml;gen</a>
+					<a href="{{ url('/circle/create') }}"> Neuen Zirkel anlegen</a>
 				</div>	
 			</div>
 		</div>

@@ -28,10 +28,10 @@ class CircleController extends Controller
      */
     public function index()
     {
-        $circle = Circle::with('subject')->orderBy('name')-->get();
+       $circles = Circle::with('subject')->get();
        
         return view('/circle.index', [
-        		'circle' => $circle
+        		'circle' => $circles
         ]);
     }
 
