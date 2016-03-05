@@ -8,12 +8,6 @@
 				<div class="panel-heading">Zirkel</div>
 
 				<table class = "table table-hover">
-					<thead>
-						<tr>
-							<td>Fach</td>
-							<td>Klasse</td>
-						</tr>
-					</thead>
 				 	<tbody>
 				 		@foreach ($circles as $circle)
 				 			<tr onclick="$(location).attr('href', '{{ url('/circle/' . $circle->id) }}');">

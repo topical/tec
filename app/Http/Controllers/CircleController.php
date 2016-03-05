@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Circle;
+use App\SessionData;
 
 
 class CircleController extends Controller
@@ -28,10 +29,10 @@ class CircleController extends Controller
      */
     public function index()
     {
-       $circles = Circle::with('subject')->get();
+       $circles = Circle::where('year', SessionData::getYear())->with('subject')->get();
        
         return view('/circle.index', [
-        		'circle' => $circles
+        		'circles' => $circles
         ]);
     }
 
