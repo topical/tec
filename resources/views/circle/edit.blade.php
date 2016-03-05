@@ -5,17 +5,14 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Zirkel</div>
+				<div class="panel-heading">Sch&uuml;leranmeldung f&uuml;r {{ $circle->subject->name . ' ' . $circle->grade }} </div>
 
 				<table class = "table table-hover">
 				 	<tbody>
 				 		@foreach ($pupils as $pupil)
 				 			<tr onclick="$(location).attr('href', '{{ url('/pupil/' . $pupil->id) }}');">
 				 				<td>
-				 					<div>{{ $pupil->firstname }}</div>
-				 				</td>
-				 				<td>
-				 					<div>{{ $pupil->surname }}</div>
+				 					<div>{{ $pupil->firstname . ' ' . $pupil->surname }}</div>
 				 				</td>
 				 				<td>
 				 					<div>{{ $pupil->school->name }}</div>
@@ -28,7 +25,7 @@
 				 	</tbody>
 				</table>
 				<div class="panel-heading">
-					<a href="{{ url('/circle/create') }}"> Neuen Schüler eintragen</a>
+					<a href="{{ url('/circle/create') }}"> Neuen Sch&uuml;ler eintragen</a>
 				</div>	
 			</div>
 		</div>

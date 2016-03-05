@@ -8,6 +8,10 @@ class Registration extends Model
 {
     protected $table = 'registration';
     
+    protected $fillable = [
+    		'pupil_id', 'circle_id'
+    ];
+    
     public function pupil()
     {
     	return $this->belongsTo('App\Pupil');

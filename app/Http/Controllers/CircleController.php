@@ -10,6 +10,7 @@ use App\Circle;
 use App\SessionData;
 use App\Registration;
 use App\Subject;
+use App\Pupil;
 
 
 class CircleController extends Controller
@@ -70,7 +71,7 @@ class CircleController extends Controller
     public function show($id)
     {
     	$circle = Circle::findOrFail($id);
-    	$pupils = $circle->pupils()->with('school')->get();
+    	$pupils = $circle->pupils()->get();
     	return view('circle.show', [
     			'circle' => $circle,
     			'pupils' => $pupils,
@@ -83,18 +84,22 @@ class CircleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
     	$circle = Circle::findOrFail($id);
-    	 
-    	$subjects = Subject::orderBy('name')->get();
-    	foreach($subjects as $subject) 
     	
-    	$circle->grade = $circle->getGrade();
-    	$circle->year = $circle->getYear();
+    	$grade = $circle->grade;
+    	if (isset($request->grade)) {
+    		$grade = $request->grade;
+    	}
+    	$pupils = Pupil::where('schoolenrolment', $circle->year - $grade + 1)->orderBy('surname')->get();
+    	$registrations = Registration::where('circle_id', $circle->id);
     	
     	return view('circle.edit', [
-    			'circle' => $circle, 
+    			'circle' => $circle,
+    			'grade' => $grade,
+    			'pupils' => $pupils,
+    			'registrations' => $registrations
     	]);
     }
 

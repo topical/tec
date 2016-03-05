@@ -25,7 +25,7 @@
 				 	</tbody>
 				</table>
 				<div class="panel-heading">
-					<a href="{{ url('/circle/create') }}"> Neuen Sch&uuml;ler eintragen</a>
+					<a href="{{ url('/circle/' . $circle->id . '/edit') }}"> Neuen Sch&uuml;ler eintragen</a>
 				</div>	
 			</div>
 		</div>
