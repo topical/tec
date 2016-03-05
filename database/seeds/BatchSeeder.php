@@ -17,6 +17,9 @@ class BatchSeeder extends Seeder
     	
     	foreach($circles as $circle){
     		$count = rand(0,4);
+    		if($count == 0) { 
+    			continue;
+    		}
     		
     		foreach(range(1, $count) as $number) {
     			Batch::create( [

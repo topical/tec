@@ -18,6 +18,7 @@ class CreateBatchTable extends Migration
             $table->integer('maxscore')->unsigned();
             $table->integer('circle_id')->unsigned();
             $table->foreign('circle_id')->references('id')->on('circle');
+            $table->unique(['circle_id', 'seqno']);
             $table->timestamps();
         });
     }

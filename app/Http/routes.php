@@ -42,5 +42,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/schoolyear', 'SchoolYearController', [
     	'only' => ['index', 'store']
     ]);
+    Route::resource('/batch', 'BatchController');
 });
 	

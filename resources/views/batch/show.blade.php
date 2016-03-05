@@ -12,22 +12,17 @@
 				 		@foreach ($pupils as $pupil)
 				 			<tr onclick="$(location).attr('href', '{{ url('/pupil/' . $pupil->id) }}');">
 				 				<td>
-				 					<div>{{ $pupil->firstname . ' ' . $pupil->surname }}</div>
+				 					<div>{{ $pupil->surname }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $pupil->school->name }}</div>
-				 				</td>
-				 				<td>
-				 					<div>{{ $pupil->getGrade() . $pupil->letter }}</div>
+				 					<div>{{ $pupil->firstname }}</div>
 				 				</td>
 				 			</tr>
 				 		@endforeach
 				 	</tbody>
 				</table>
 				<div class="panel-heading">
-					<a href="{{ url('/circle/' . $circle->id . '/edit') }}"> Neuen Sch&uuml;ler eintragen</a>
-					</br>
-					<a href="{{ url('/batch?circle_id=' . $circle->id) }}"> Aufgaben verwalten</a>
+					<a href="{{ url('/circle/create') }}"> Neuen Sch&uuml;ler eintragen</a>
 				</div>	
 			</div>
 		</div>
