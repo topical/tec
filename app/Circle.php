@@ -23,7 +23,7 @@ class Circle extends Model
     	return $this->hasMany('App\Batch');
     }
     
-    public function pupil()
+    public function pupils()
     {
     	return $this->belongsToMany('App\Pupil', 'registration');
     }
