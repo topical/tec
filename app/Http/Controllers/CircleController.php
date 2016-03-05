@@ -70,7 +70,7 @@ class CircleController extends Controller
     public function show($id)
     {
     	$circle = Circle::findOrFail($id);
-    	$pupils = $circle->pupils()->get();
+    	$pupils = $circle->pupils()->with('school')->get();
     	return view('circle.show', [
     			'circle' => $circle,
     			'pupils' => $pupils,

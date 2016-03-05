@@ -12,10 +12,16 @@
 				 		@foreach ($pupils as $pupil)
 				 			<tr onclick="$(location).attr('href', '{{ url('/pupil/' . $pupil->id) }}');">
 				 				<td>
+				 					<div>{{ $pupil->firstname }}</div>
+				 				</td>
+				 				<td>
 				 					<div>{{ $pupil->surname }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $pupil->firstname }}</div>
+				 					<div>{{ $pupil->school->name }}</div>
+				 				</td>
+				 				<td>
+				 					<div>{{ $pupil->getGrade() . $pupil->letter }}</div>
 				 				</td>
 				 			</tr>
 				 		@endforeach
