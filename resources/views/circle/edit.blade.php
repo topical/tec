@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Sch&uuml;leranmeldung f&uuml;r {{ $circle->subject->name . ' ' . $circle->grade }} </div>
+				<div class="panel-heading">Teilnehmerverwaltung f&uuml;r {{ $circle->subject->name . ' ' . $circle->grade }} </div>
 
 				<table class = "table table-hover">
 				 	<tbody>
@@ -24,10 +24,20 @@
 				 		@endforeach
 				 	</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/circle/create') }}"> Neuen Sch&uuml;ler eintragen</a>
-				</div>	
 			</div>
+				<form action="{{ url('/circle/' . $circle->id . '/edit') }}" role="form" method="get" class="form-inline">
+					<div class="form-group">
+						<label class="form-control-static">Nur Sch&uuml;ler der Klassenstufe</label>
+						<select name="grade" class="form-control">
+						@foreach (range($circle->grade - 1, $circle->grade + 1) as $tmpgrade)
+							<option value="{{ $tmpgrade }}" {{ $grade == $tmpgrade ? 'selected' : '' }}>
+							{{ $tmpgrade }}
+							</option>
+						@endforeach 
+						</select>
+					</div>
+					<button type="submit" class="btn btn-default">Anzeigen</button>
+				</form>	
 		</div>
 	</div>
 </div>

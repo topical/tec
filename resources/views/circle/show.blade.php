@@ -25,7 +25,7 @@
 				 	</tbody>
 				</table>
 				<div class="panel-heading">
-					<a href="{{ url('/circle/' . $circle->id . '/edit') }}"> Neuen Sch&uuml;ler eintragen</a>
+					<a href="{{ url('/circle/' . $circle->id . '/edit') }}">Teilnehmer verwalten</a>
 					</br>
 					<a href="{{ url('/batch?circle_id=' . $circle->id) }}"> Aufgaben verwalten</a>
 				</div>	
