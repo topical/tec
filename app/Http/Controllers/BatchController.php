@@ -132,18 +132,32 @@ class BatchController extends Controller
     public function update(Request $request, $id)
     {
     	$this->validate($request, [
-    			'year' => 'required',
-    			'grade' => 'required|numeric|min:3|max:13',
+    			'maxscore' => 'required|numeric|min:1|max:40',
     	]);
+    	    	 
+    	$batch = Batch::findOrFail($id);
     	 
-    	$circle = Circle::findOrFail($id);
+    	$batch->maxscore = $request->maxscore;
     	 
-    	$circle->year = $request->year;
-    	$circle->setGrade( $request->grade );
+    	$batch->save();
+    	
+    	foreach ($request->scores as $pupil_id => $score) {
+    		if ($score !="" ) {
+    			$submission = Submission::firstOrCreate([
+    				'pupil_id' => $pupil_id,
+    				'batch_id' => $batch->id,
+    			]);
+    			
+    			if ($submission->score != $score) {
+    				$submission->score = $score;
+    				$submission->save();
+    			}
+    		} else {
+    			Submission::where('pupil_id', $pupil_id)->where('batch_id', $batch->id)->delete();
+    		}
+    	}
     	 
-    	$circle->save();
-    	 
-    	return redirect('circle/' . $id);
+    	return redirect('batch?circle_id=' . $batch->circle_id);
     }
 
     /**
@@ -154,13 +168,7 @@ class BatchController extends Controller
      */
     public function destroy($id)
     {
-    	$circle = circle::findOrFail($id);
     	
-    	$circle->delete();
-    	
-    	Session::flash('message', 'Die ausgewählte Korrespondenz wurde gelöscht');
-    	
-    	return redirect('circle');
     }
 }
 
