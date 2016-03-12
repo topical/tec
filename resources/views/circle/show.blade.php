@@ -24,12 +24,10 @@
 				 		@endforeach
 				 	</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/circle/' . $circle->id . '/edit') }}">Teilnehmer verwalten</a>
-					</br>
-					<a href="{{ url('/batch?circle_id=' . $circle->id) }}"> Aufgaben verwalten</a>
-				</div>	
 			</div>
+			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/circle/' . $circle->id . '/edit') }}'">Teilnehmer verwalten</button>
+			<button class="btn btn-default" type="submit" onclick="location.href = '{{ url('/batch?circle_id=' . $circle->id) }}'"> Aufgaben verwalten</button>
+			<button class="btn btn-info pull-right" type="submit" onclick="location.href = '{{ url('/circle/' . $circle->id . '/edit') }}'">Auswertung</button>	
 		</div>
 	</div>
 </div>

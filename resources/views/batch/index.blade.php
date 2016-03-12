@@ -23,10 +23,8 @@
 				 		@endforeach
 				 	</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/batch/create?circle_id=' . $circle->id) }}"> Neuen Brief anlegen</a>
-				</div>	
-			</div>
+			</div>	
+			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/batch/create?circle_id=' . $circle->id) }}'"> Neue Aufgabenserie anlegen </button>
 		</div>
 	</div>
 </div>

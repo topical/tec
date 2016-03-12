@@ -21,10 +21,8 @@
 				 		@endforeach
 				 	</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/circle/create') }}"> Neuen Zirkel anlegen</a>
-				</div>	
 			</div>
+			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/circle/create') }}'"> Neuen Zirkel anlegen</button>
 		</div>
 	</div>
 </div>
