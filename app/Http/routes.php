@@ -26,18 +26,12 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/school', 'SchoolController');
     Route::resource('/pupil', 'PupilController');
-    Route::resource('/user', 'UserController');
     Route::get('/circle/{circle}/analyze', 'CircleController@analyze');
     Route::resource('/circle', 'CircleController');
     Route::resource('/schoolyear', 'SchoolYearController', [
@@ -47,4 +41,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/registration/add', 'RegistrationController@add');
     Route::get('/registration/remove', 'RegistrationController@remove');
 });
-	
+
+Route::group(['middleware' => 'web'], function () {
+	Route::auth();
+});
+
+Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
+	Route::resource('/user', 'UserController');
+});
