@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\School;
+use App\SessionData;
+use App\Pupil;
 
 class SchoolController extends Controller
 {
@@ -66,8 +68,17 @@ class SchoolController extends Controller
     {
         $school = School::findOrFail($id);
         
+        $registrations =
+        	Pupil::join('registration', 'pupil.id', '=', 'registration.pupil_id')->
+        	join('circle', 'registration.circle_id', '=', 'circle.id')->
+        	join('subject', 'circle.subject_id', '=', 'subject.id')->
+        	where('pupil.school_id', $school->id)->
+        	where('circle.year', SessionData::getYear())->
+        	get();
+        	
         return view('school.show', [
-        	'school' => $school
+        	'school' => $school,
+        	'registrations' => $registrations
         ]);
     }
 

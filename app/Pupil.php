@@ -51,4 +51,9 @@ class Pupil extends Model
     {
     	return SessionData::getYear() - $grade + 1;
     }
+    
+    static public function enrolmentToGrade( $enrolment )
+    {
+    	return SessionData::getYear() - $enrolment + 1;
+    }
 }

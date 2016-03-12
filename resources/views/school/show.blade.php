@@ -18,6 +18,23 @@
                     </a>
                 </div>
             </div>
+            <div class="panel panel-default">
+            	<div class="panel-heading">Aktive Teilnehmer</div>
+            	<div class="panel-body">
+            		<div class="container">
+            			@foreach ($registrations as $registration)
+            				<div class="row">
+            					<div class="col-md-6 col-md-offset-1">
+            						{{ $registration->firstname . ' ' . $registration->surname . ', ' . App\Pupil::enrolmentToGrade($registration->schoolenrolment) . $registration->letter }}
+            					</div>
+            					<div class="col-md-4">
+            						{{ $registration->name . ' ' . $registration->grade }}
+            					</div>
+            				</div>
+            			@endforeach
+            		</div>
+            	</div>
+            </div>
         </div>
     </div>
 </div>
