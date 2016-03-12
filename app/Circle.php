@@ -34,6 +34,6 @@ class Circle extends Model
     
     public function submissions()
     {
-    	return $this->hasManyThrough('App\Submission', 'batch');
+    	return $this->hasManyThrough('App\Submission', 'App\Batch');
     }
 }

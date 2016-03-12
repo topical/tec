@@ -159,4 +159,37 @@ class CircleController extends Controller
     	
     	return redirect('circle');
     }
+   
+    public function analyze(Circle $circle)
+    {
+    	$pupils = $circle->pupils()->get();
+    	$submissions = $circle->submissions()->get();
+    	$batches = $circle->batches()->orderBy('seqno')->get();
+    	
+    	$totals = [];
+    	foreach ($submissions as $submission) {
+    		if (!isset($totals[$submission->pupil_id])) {
+    			$totals[$submission->pupil_id] = 0;
+    		}
+    		$totals[$submission->pupil_id] += $submission->score;
+    	}
+    	
+    	$scores = [];
+    	foreach ($submissions as $submission) {
+    		$scores[$submission->pupil_id][$submission->batch_id] = $submission->score;
+    	}
+    	
+    	$maxtotal = 0;
+    	foreach ($batches as $batch) {
+    		$maxtotal += $batch->maxscore;
+    	}
+    	
+    	return view('/circle.analyze', [
+        		'pupils' => $pupils,
+    			'batches' => $batches,
+				'totals' => $totals, 
+    			'scores' => $scores,
+    			'maxtotal' => $maxtotal
+        ]);
+    }
 }
