@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +26,9 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => ['web', 'auth']], function () {
+	Route::get('/', function () {
+    	return view('welcome');
+	});
     Route::resource('/subject', 'SubjectController');
     Route::resource('/school', 'SchoolController');
     Route::resource('/pupil', 'PupilController');
