@@ -11,12 +11,14 @@
 				 	<tbody>
 				 		@foreach ($batches as $batch)
 				 			<tr onclick="$(location).attr('href', '{{ url('/batch/' . $batch->id . '/edit') }}');">
+				 				<td/>
 				 				<td>
-				 					<div>{{ $batch->seqno }}</div>
+				 					<div>{{ 'Aufgabenserie ' . $batch->seqno }}</div>
 				 				</td>
 				 				<td>
-				 					<div>{{ $batch->maxscore }}</div>
+				 					<div>{{ 'max. ' . $batch->maxscore }}</div>
 				 				</td>
+				 				<td/>
 				 			</tr>
 				 		@endforeach
 				 	</tbody>
