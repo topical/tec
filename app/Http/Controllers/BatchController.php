@@ -103,15 +103,21 @@ class BatchController extends Controller
     public function edit($id)
     {
     	$batch = Batch::findOrFail($id);
-    	$circle = $batch->circle()->get();
-    	$pupils = $circle->pupils()->get();
+    	$circle = $batch->circle;
+    	$pupils = $circle->pupils()->orderBy('surname')->get();
     	$submissions = $batch->submissions()->get();
+    	
+    	$scores = [];
+    	
+    	foreach ($submissions as $submission) {
+    		$scores[$submission->pupil_id] = $submission->score;
+    	}
     	
     	return view('batch.edit', [
     			'batch' => $batch,
     			'circle' => $circle,
     			'pupils' => $pupils,
-    			'submissions' => $submissions,
+    			'scores' => $scores,
     			'maxscore' => $batch->maxscore
     	]);
     }

@@ -8,6 +8,10 @@ class Submission extends Model
 {
 	protected $table = 'submission';
 	
+	protected $fillable = [
+			'score', 'pupil_id', 'batch_id'
+	];
+	
 	public function pupil()
 	{
 		return $this->belongsTo('App\Pupil');
