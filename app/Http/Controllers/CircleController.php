@@ -162,7 +162,7 @@ class CircleController extends Controller
    
     public function analyze(Circle $circle)
     {
-    	$pupils = $circle->pupils()->get();
+    	$pupils = $circle->pupils()->orderBy('surname')->get();
     	$submissions = $circle->submissions()->get();
     	$batches = $circle->batches()->orderBy('seqno')->get();
     	
