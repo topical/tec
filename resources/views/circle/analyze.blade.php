@@ -5,7 +5,9 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Auswertung</div>
+                <div class="panel-heading">
+                	{{ 'Auswertung ' . $circle->subject->name . ' Klassenstufe ' . $circle->grade }}
+                </div>
                 <div class="panel-body">
                 	<table class="table">
                 		<thead>
@@ -35,6 +37,7 @@
                 	</table>   
                 </div>
             </div>
+            <button class="btn" onclick="location.href = '{{ url('/batch?circle_id=' . $circle->id) }}'">Aufgaben verwalten</button>
         </div>
     </div>
 </div>

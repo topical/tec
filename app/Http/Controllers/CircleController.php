@@ -189,7 +189,8 @@ class CircleController extends Controller
     			'batches' => $batches,
 				'totals' => $totals, 
     			'scores' => $scores,
-    			'maxtotal' => $maxtotal
+    			'maxtotal' => $maxtotal,
+    			'circle' => $circle
         ]);
     }
 }
