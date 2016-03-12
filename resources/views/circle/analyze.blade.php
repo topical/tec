@@ -37,7 +37,7 @@
                 	</table>   
                 </div>
             </div>
-            <button class="btn" onclick="location.href = '{{ url('/batch?circle_id=' . $circle->id) }}'">Aufgaben verwalten</button>
+            <button class="btn btn-default" onclick="location.href = '{{ url('/batch?circle_id=' . $circle->id) }}'"><i class="fa fa-list"></i> Aufgaben verwalten</button>
         </div>
     </div>
 </div>
