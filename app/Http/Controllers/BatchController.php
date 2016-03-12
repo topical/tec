@@ -157,7 +157,7 @@ class BatchController extends Controller
     		}
     	}
     	 
-    	return redirect('batch?circle_id=' . $batch->circle_id);
+    	return redirect('circle/' . $batch->circle_id . '/analyze');
     }
 
     /**
