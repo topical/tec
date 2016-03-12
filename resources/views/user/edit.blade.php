@@ -42,7 +42,8 @@
                     	</div>
                     	<div class="form-group ">
                     		<div class="col-md-6 col-md-offset-4">
-                    			<button class="btn btn-primary" type="submit">Speichern</button>
+                    			<button class="btn btn-success" type="submit">
+                    			<i class="fa fa-btn fa-floppy-o"></i>Speichern</button>
                     		</div>
                     	</div>
 					{{ Form::close() }}

@@ -18,10 +18,8 @@
 						@endforeach
 					</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/subject/create') }}">Neues Fach anlegen</a>
-				</div>
-			</div>
+			</div>	
+			<button class="btn btn-default" onclick="location.href = '{{ url('/subject/create') }}'"><i class="fa fa-btn fa-plus"></i>Neues Fach anlegen</button>
 		</div>
 	</div>
 </div>

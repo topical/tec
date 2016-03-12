@@ -22,7 +22,7 @@
 				 	</tbody>
 				</table>
 			</div>
-			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/circle/create') }}'"> Neuen Zirkel anlegen</button>
+			<button class="btn btn-default" onclick="location.href = '{{ url('/circle/create') }}'"><i class="fa fa-btn fa-plus"></i>Neuen Zirkel anlegen</button>
 		</div>
 	</div>
 </div>

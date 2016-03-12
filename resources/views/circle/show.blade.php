@@ -25,9 +25,9 @@
 				 	</tbody>
 				</table>
 			</div>
-			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/circle/' . $circle->id . '/edit') }}'">Teilnehmer verwalten</button>
-			<button class="btn btn-default" type="submit" onclick="location.href = '{{ url('/batch?circle_id=' . $circle->id) }}'"> Aufgaben verwalten</button>
-			<button class="btn btn-info pull-right" type="submit" onclick="location.href = '{{ url('/circle/' . $circle->id . '/edit') }}'">Auswertung</button>	
+			<button class="btn btn-default" onclick="location.href = '{{ url('/circle/' . $circle->id . '/edit') }}'"><i class="fa fa-list"></i> Teilnehmer verwalten</button>
+			<button class="btn btn-default" onclick="location.href = '{{ url('/batch?circle_id=' . $circle->id) }}'"><i class="fa fa-list"></i> Aufgaben verwalten</button>
+			<button class="btn btn-info pull-right" onclick="location.href = '{{ url('/circle/' . $circle->id . '/analyze') }}'">Auswertung</button>	
 		</div>
 	</div>
 </div>

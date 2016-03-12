@@ -38,11 +38,9 @@
 				 			</tr>
 				 		@endforeach
 				 	</tbody>
-				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/pupil/create') }}"> Neuen Sch&uuml;ler hinzuf&uuml;gen</a>
-				</div>	
+				</table>	
 			</div>
+			<button class="btn btn-default" onclick="location.href = '{{ url('/pupil/create') }}'"><i class="fa fa-btn fa-plus"></i>Neuen Sch&uuml;ler hinzuf&uuml;gen</button>
 		</div>
 	</div>
 </div>

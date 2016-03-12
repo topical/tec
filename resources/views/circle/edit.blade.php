@@ -22,14 +22,14 @@
 				 				</td>
 				 				<td style="vertical-align: middle">
 				 					@if ($registered_pupils->contains($pupil))
-				 					<button class="btn btn-success" type="button" onclick="
+				 					<button class="btn btn-danger" type="button" onclick="
                                     	$.get( '{{ url('/registration/remove') }}',
                                     			{ pupil_id : {{ $pupil->id }}, 
                                     			  circle_id : {{ $circle->id }}
                                     			}, function() { location.reload(); } );
 					 				">Austragen</button>
 				 					@else
-				 					<button class="btn" type="button" type="button" onclick="
+				 					<button class="btn" type="button" onclick="
                                     	$.get( '{{ url('/registration/add') }}',
                                     			{ pupil_id : {{ $pupil->id }}, 
                                     			  circle_id : {{ $circle->id }}

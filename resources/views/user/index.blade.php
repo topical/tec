@@ -31,10 +31,8 @@
 				 		@endforeach
 				 	</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/user/create') }}">Neuen Nutzer anlegen</a>
-				</div>	
-			</div>
+			</div>		
+			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/user/create') }}'"><i class="fa fa-btn fa-plus"></i>Neuen Nutzer anlegen</button>
 		</div>
 	</div>
 </div>

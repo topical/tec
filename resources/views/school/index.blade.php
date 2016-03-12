@@ -27,10 +27,8 @@
 				 		@endforeach
 				 	</tbody>
 				</table>
-				<div class="panel-heading">
-					<a href="{{ url('/school/create') }}"> Neue Schule hinzuf&uuml;gen</a>
-				</div>	
 			</div>
+			<button class="btn btn-default" onclick="location.href = '{{ url('/school/create') }}'"><i class="fa fa-btn fa-plus"></i>Neue Schule hinzuf&uuml;gen</button>
 		</div>
 	</div>
 </div>

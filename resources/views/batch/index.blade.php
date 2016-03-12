@@ -24,7 +24,7 @@
 				 	</tbody>
 				</table>
 			</div>	
-			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/batch/create?circle_id=' . $circle->id) }}'"> Neue Aufgabenserie anlegen </button>
+			<button  class="btn btn-default" type="submit" onclick="location.href = '{{ url('/batch/create?circle_id=' . $circle->id) }}'"><i class="fa fa-btn fa-plus"></i>Neue Aufgabenserie anlegen </button>
 		</div>
 	</div>
 </div>

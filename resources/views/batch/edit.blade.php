@@ -36,7 +36,7 @@
 						</table>
 					</div>
 				</div>
-				<button class="btn btn-success" type="submit">Speichern</button>
+				<button class="btn btn-success" type="submit"><i class="fa fa-btn fa-floppy-o"></i>Speichern</button>
 			</form>
 		</div>
 	</div>
