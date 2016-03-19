@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\School;
 use App\Pupil;
 use App\SessionData;
+use Session;
 
 class SchoolController extends Controller
 {

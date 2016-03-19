@@ -13,9 +13,12 @@
                     <br/>
                     {{ $school->zipcode . ' ' . $school->town }}
                     <br/>
-                    <a class="btn -primary" href="{{ url('/school/' . $school->id . '/edit') }}">
-                    <i class="fa fa-btn fa-edit"></i>Bearbeiten
-                    </a>
+                    {{ Form::open(['method' => 'delete', 'action' => ['SchoolController@destroy', $school->id]]) }}
+                    <button class="btn btn-default" type="button" onclick="location.href = '{{ url('/school/' . $school->id . '/edit') }}'">
+                    	<i class="fa fa-btn fa-edit"></i>Bearbeiten
+                    </button>
+                    <button type="submit" class="btn pull-right">L&ouml;schen</button>
+                    {{ Form::close() }}
                 </div>
             </div>
             <div class="panel panel-default">
@@ -38,6 +41,7 @@
             	</div>
            				 
            </div>
+           <button class="btn btn-default" type="submit" onclick="location.href = '{{ url('/school') }}'"><i class="fa fa-arrow-left"></i> zur&uuml;ck</button>
 		</div>
      </div>
     </div>
