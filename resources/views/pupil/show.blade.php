@@ -20,6 +20,7 @@
                     </a>
                 </div>
             </div>
+            <button class="btn btn-default" type="button" onclick="location.href = '{{ url('/pupil') }}'"><i class="fa fa-arrow-left"></i> Sch&uuml;lerliste</button>
         </div>
     </div>
 </div>
