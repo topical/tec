@@ -5,7 +5,9 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Aufgaben f&uuml;r {{ $circle->subject->name . ' ' . $circle->grade }} </div>
+				<div class="panel-heading" onclick="$(location).attr('href', '{{ url('/circle/' . $circle->id) }}');">
+					Aufgaben f&uuml;r {{ $circle->subject->name . ' ' . $circle->grade }} 
+				</div>
 
 				<table class = "table table-hover">
 				 	<tbody>
