@@ -23,7 +23,6 @@
             </div>
             <div class="panel panel-default">
             	<div class="panel-heading">Aktive Teilnehmer</div>
-            	<div class="panel-body">
             		<table class="table">
             			@foreach ($registrations as $registration)
             				<tr>
@@ -38,10 +37,10 @@
             				</tr>
             			@endforeach
             		</table>
-            	</div>
            				 
            </div>
            <button class="btn btn-default" type="submit" onclick="location.href = '{{ url('/school') }}'"><i class="fa fa-arrow-left"></i> zur&uuml;ck</button>
+           <p/>
 		</div>
      </div>
     </div>

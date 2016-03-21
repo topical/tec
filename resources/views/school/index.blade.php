@@ -29,6 +29,7 @@
 				</table>
 			</div>
 			<button class="btn btn-default" onclick="location.href = '{{ url('/school/create') }}'"><i class="fa fa-btn fa-plus"></i>Neue Schule hinzuf&uuml;gen</button>
+            <p/>
 		</div>
 	</div>
 </div>

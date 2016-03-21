@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Schulen</div>
+				<div class="panel-heading">Sch&uuml;er</div>
 
 				<table class = "table table-hover">
 					<thead>
@@ -41,6 +41,7 @@
 				</table>	
 			</div>
 			<button class="btn btn-default" onclick="location.href = '{{ url('/pupil/create') }}'"><i class="fa fa-btn fa-plus"></i>Neuen Sch&uuml;ler hinzuf&uuml;gen</button>
+            <p/>
 		</div>
 	</div>
 </div>
