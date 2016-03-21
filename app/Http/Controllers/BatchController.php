@@ -69,8 +69,7 @@ class BatchController extends Controller
     			'seqno' => $request->seqno, 
     	]);
     	 
-    	return redirect('batch/' . $batch->id);
-    		
+    	return redirect('batch/' . $batch->id . '/edit');
     }
 
     /**
